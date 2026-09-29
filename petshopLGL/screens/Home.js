@@ -3,98 +3,116 @@ import { useState } from "react";
 import { auth } from "../config/firebase";
 import { sair } from "../services/auth";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { dados } from '../screens/dados'
 
+export default function Home({ navigation }) {
 
-    export default function Home({ navigation }) {
-
-        async function realizarLogOut() {
+    async function realizarLogOut() {
         await sair()
         navigation.navigate('Login')
-        }
+    }
 
-        let [passo, setPasso] = useState(0);
+    let [passo, setPasso] = useState(0);
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.conteudo}>
-                <Text style={styles.titulo}>Olá, seja bem-vindo(a)!</Text>
-                
-                <View style={styles.card}>
-                    <Text style={styles.cardTitulo}>Sua conta</Text>
-                    <Text style={styles.email}>{auth.currentUser?.email}</Text>
+        <View style={styles.tela}>
+            <ScrollView contentContainerStyle={styles.container}>
+            <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
+                <View style={styles.container}>
+
+                    <Text style={styles.logo}>PetZEN</Text>
+                    <Text style={styles.ola}>Olá, {dados.nome}!</Text>
+            
+                    <TouchableOpacity 
+                    style={[styles.card, { backgroundColor: '#66bbb6' }]} 
+                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Banho' })}
+                    >
+                    <Text style={styles.cardTexto}>🛁 Agende seu banho</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                    style={[styles.card, { backgroundColor: '#eec45e' }]} 
+                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Tosa' })}
+                    > <Text style={styles.cardTexto}>✂️ Agende sua tosa</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                    style={[styles.card, { backgroundColor: '#ee7f2d' }]} 
+                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Consulta' })}
+                    > <Text style={styles.cardTexto}>🩺 Agende sua consulta</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                    style={[styles.card, { backgroundColor: '#fffaf3' }]} 
+                    onPress={() => navigation.navigate('Compras')}
+                    > <Text style={styles.cardTexto}>🛍️ Compre nossos produtos</Text>
+                    </TouchableOpacity>
                 </View>
-                
-                <Text style={styles.titulo}>Manual - Firebase Authentication com React Native</Text>
-                <Text style={styles.descricao}>Laura Lisboa e Giovanna Cintra</Text>
-                
-                   
-                
-                    <View style={styles.botao}>
-                    <Button
-                    title="Sair"
-                    onPress={realizarLogOut}
-                    />
-                    </View>
+            </View>
+            </ScrollView>
 
-                    <View style={styles.menuInferior}>
+            <View style={styles.menuInferior}>
 
-                        <TouchableOpacity
-                        style={styles.itemMenu}
-                        
-                        >
-                        <MaterialCommunityIcons
-                            name="bell-outline"
-                            size={20}
-                            color="#999999"
-                        />
-                        <Text style={[styles.textoMenu, { color: "#2E98FE" }]}>
-                            Notificações
-                        </Text>
-                        </TouchableOpacity>
+                <TouchableOpacity
+                style={styles.itemMenu}
+                onPress={() => navigation.navigate("Notificacoes")}
+                >
+                <MaterialCommunityIcons
+                    name="bell-outline"
+                    size={20}
+                    color="#999999"
+                />
+                <Text style={styles.textoMenu}>
+                    Notificações
+                </Text>
+                </TouchableOpacity>
 
 
-                        <TouchableOpacity
-                        style={styles.itemMenu}
-                        
-                        >
-                        <MaterialCommunityIcons
-                            name="monitor-cellphone"
-                            size={25}
-                            color="#EE7F2D"
-                        />
-                        <Text style={styles.textoMenu}>
-                            Home
-                        </Text>
-                        </TouchableOpacity>
+                <TouchableOpacity
+                style={styles.itemMenu}
+                onPress={() => navigation.navigate("Home")}
+                >
+                <MaterialCommunityIcons
+                    name="home"
+                    size={25}
+                    color="#EE7F2D"
+                />
+                <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
+                    Home
+                </Text>
+                </TouchableOpacity>
 
 
-                        <TouchableOpacity
-                        style={styles.itemMenu}
-                        
-                        >
-                        <MaterialCommunityIcons
-                            name="paw"
-                            size={20}
-                            color="#999999"
-                        />
-                        <Text style={styles.textoMenu}>
-                            Perfil
-                        </Text>
-                        </TouchableOpacity>
+                <TouchableOpacity
+                style={styles.itemMenu}
 
-                    </View>
+                >
+                <MaterialCommunityIcons
+                    name="paw"
+                    size={20}
+                    color="#999999"
+                />
+                <Text style={styles.textoMenu}>
+                    Perfil
+                </Text>
+                </TouchableOpacity>
+
                 </View>
-        </ScrollView>
-        )
-    }
+        </View>
+    )
+}
 
 
 const styles = StyleSheet.create({
-    container: {
+    tela: {
         flex: 1,
         backgroundColor: "#f5f9fc",
-        justifyContent: "center",
+    },
+
+    container: {
         paddingHorizontal: 25,
+        paddingTop: 30,
+        paddingBottom: 90,
     },
 
     conteudo: {
@@ -116,9 +134,9 @@ const styles = StyleSheet.create({
         marginBottom: 60,
         shadowColor: "#000",
         shadowOffset: {
-        width: 0,
-        height: 0,
-    },
+            width: 0,
+            height: 0,
+        },
         shadowOpacity: 0.08,
         shadowRadius: 6,
         elevation: 3,
@@ -135,11 +153,10 @@ const styles = StyleSheet.create({
         color: "#3498db",
     },
 
-    mensagem: {
-        fontSize: 15,
-        color: "#666",
-        textAlign: "center",
-        lineHeight: 22,
+    descricao: {
+        fontSize: 17,
+        color: "#555",
+        lineHeight: 25,
         marginBottom: 25,
     },
 
@@ -149,38 +166,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         overflow: "hidden",
         width: "100%",
-        },
-
-    card1: {
-        backgroundColor: "#fff",
-        borderRadius: 20,
-        padding: 25,
-        marginBottom: 20,
-        width: "100%",
-        minHeight: 200,
-        shadowColor: "#000",
-        shadowOffset: {
-        width: 0,
-        height: 0,
-        },
-        shadowOpacity: 0.08,
-        shadowRadius: 6,
-        elevation: 3,
-    },
-    
-    descricao: {
-        fontSize: 17,
-        color: "#555",
-        lineHeight: 25,
-        marginBottom: 25,
-    },
-
-    botoes: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        marginTop: 10,
     },
 
     menuInferior: {
@@ -208,9 +193,8 @@ const styles = StyleSheet.create({
       },
     
       textoMenu: {
-        fontFamily: "Nunito",
         fontSize: 11,
         color: "#999999",
         marginTop: 3,
       },
-});
+})
