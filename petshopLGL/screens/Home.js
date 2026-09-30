@@ -1,9 +1,8 @@
-import { View, Text, ScrollView, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import { useState } from "react";
 import { auth } from "../config/firebase";
 import { sair } from "../services/auth";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { dados } from '../screens/dados'
 
 export default function Home({ navigation }) {
 
@@ -21,32 +20,56 @@ export default function Home({ navigation }) {
                 <View style={styles.container}>
 
                     <Text style={styles.logo}>PetZEN</Text>
-                    <Text style={styles.ola}>Olá, {dados.nome}!</Text>
+                    <Text style={styles.ola}>Olá, {auth.currentUser?.email}!</Text>
             
                     <TouchableOpacity 
                     style={[styles.card, { backgroundColor: '#66bbb6' }]} 
                     onPress={() => navigation.navigate('Agendamentos', { servico: 'Banho' })}
-                    >
-                    <Text style={styles.cardTexto}>🛁 Agende seu banho</Text>
+                    > 
+                    <MaterialCommunityIcons
+                        name="shower"
+                        size={20}
+                        color="#000"
+                    /> 
+                    <Text style={styles.cardTexto}> Agende seu banho</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
                     style={[styles.card, { backgroundColor: '#eec45e' }]} 
                     onPress={() => navigation.navigate('Agendamentos', { servico: 'Tosa' })}
-                    > <Text style={styles.cardTexto}>✂️ Agende sua tosa</Text>
+                    > 
+                    <MaterialCommunityIcons
+                        name="scissors-cutting"
+                        size={20}
+                        color="#000"
+                    /> 
+                    <Text style={styles.cardTexto}> Agende sua tosa</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
                     style={[styles.card, { backgroundColor: '#ee7f2d' }]} 
                     onPress={() => navigation.navigate('Agendamentos', { servico: 'Consulta' })}
-                    > <Text style={styles.cardTexto}>🩺 Agende sua consulta</Text>
+                    > 
+                    <MaterialCommunityIcons
+                        name="doctor"
+                        size={20}
+                        color="#000"
+                    /> 
+                    <Text style={styles.cardTexto}>  Agende sua consulta</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
                     style={[styles.card, { backgroundColor: '#fffaf3' }]} 
                     onPress={() => navigation.navigate('Compras')}
-                    > <Text style={styles.cardTexto}>🛍️ Compre nossos produtos</Text>
+                    > 
+                    <MaterialCommunityIcons
+                        name="shopping"
+                        size={20}
+                        color="#000"
+                    /> 
+                    <Text style={styles.cardTexto}>  Compre nossos produtos</Text>
                     </TouchableOpacity>
+
                 </View>
             </View>
             </ScrollView>
@@ -74,7 +97,7 @@ export default function Home({ navigation }) {
                 >
                 <MaterialCommunityIcons
                     name="home"
-                    size={25}
+                    size={35}
                     color="#EE7F2D"
                 />
                 <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
@@ -85,7 +108,7 @@ export default function Home({ navigation }) {
 
                 <TouchableOpacity
                 style={styles.itemMenu}
-
+                onPress={() => navigation.navigate("Perfil")}
                 >
                 <MaterialCommunityIcons
                     name="paw"
@@ -97,7 +120,8 @@ export default function Home({ navigation }) {
                 </Text>
                 </TouchableOpacity>
 
-                </View>
+            </View>
+                
         </View>
     )
 }
@@ -106,7 +130,7 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     tela: {
         flex: 1,
-        backgroundColor: "#f5f9fc",
+        backgroundColor: "#e9ccad",
     },
 
     container: {
@@ -132,6 +156,7 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         padding: 20,
         marginBottom: 60,
+        flexDirection: "row",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -145,6 +170,7 @@ const styles = StyleSheet.create({
     cardTitulo: {
         fontSize: 14,
         color: "#888",
+        margimLeft: 4
     },
 
     email: {
@@ -197,4 +223,5 @@ const styles = StyleSheet.create({
         color: "#999999",
         marginTop: 3,
       },
+
 })

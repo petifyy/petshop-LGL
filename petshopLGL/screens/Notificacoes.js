@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { StyleSheet, View, Text, ScrollView, Alert } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, Alert, TouchableOpacity } from 'react-native'
 import * as Notifications from 'expo-notifications'
 import { dados } from '../screens/dados'
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export async function enviarNotificacao(titulo, corpo, tipo, segundos) {
   const { status } = await Notifications.getPermissionsAsync()
@@ -112,8 +113,59 @@ export default function Notificacoes({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, paddingTop: 60 },
-  titulo: { fontSize: 28, fontWeight: 'bold', color: '#4a3b2e', marginBottom: 10 },
-  card: { backgroundColor: '#fffaf3', borderRadius: 12, padding: 12, marginBottom: 10 },
-  tipo: { color: '#ee7f2d', fontWeight: 'bold', marginBottom: 4 }
+  container: { 
+    flex: 1, 
+    padding: 20, 
+    paddingTop: 60 
+  },
+
+  titulo: { 
+    fontSize: 28, 
+    fontWeight: 'bold', 
+    color: '#4a3b2e', 
+    marginBottom: 10 
+  },
+
+  card: { 
+    backgroundColor: '#fffaf3', 
+    borderRadius: 12, 
+    padding: 12, 
+    marginBottom: 10 
+  },
+
+  tipo: { 
+    color: '#ee7f2d', 
+    fontWeight: 'bold', 
+    marginBottom: 4 
+  },
+
+  menuInferior: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    zIndex: 999,
+    elevation: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.04,
+    shadowRadius: 5,
+  },
+
+  itemMenu: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  textoMenu: {
+    fontSize: 11,
+    color: "#999999",
+    marginTop: 3,
+  },
 })

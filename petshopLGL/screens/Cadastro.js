@@ -3,6 +3,7 @@ import { useState } from "react";
 import { cadastrar } from "../services/auth";
 
 export default function Cadastro({navigation}){
+    const [nome,setNome] = useState('')
     const [email,setEmail] = useState('')
     const [senha,setSenha] = useState('')
 
