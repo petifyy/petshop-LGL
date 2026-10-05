@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import { useState } from "react";
 import { auth } from "../config/firebase";
 import { sair } from "../services/auth";
@@ -19,8 +19,11 @@ export default function Home({ navigation }) {
             <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
                 <View style={styles.container}>
 
-                    <Text style={styles.logo}>PetZEN</Text>
-                    <Text style={styles.ola}>Olá, {auth.currentUser?.email}!</Text>
+                <Image
+                    source={require("../assets/logoLGL.png")}
+                    style={styles.logo}
+                />
+                    <Text style={styles.titulo}>Olá, {auth.currentUser?.email}!</Text>
             
                     <TouchableOpacity 
                     style={[styles.card, { backgroundColor: '#66bbb6' }]} 
@@ -143,11 +146,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
-    titulo: {
-        fontSize: 28,
-        fontWeight: "bold",
-        color: "#3498db",
-        marginBottom: 15,
+    logo:{
+        width:200,
+        height:200,
+        alignSelf:"center",
+        resizeMode:"contain"
+        },
+      
+    titulo:{
+        fontSize:20,
+        textAlign:"center",
+        marginVertical:40
     },
 
     card: {
@@ -155,7 +164,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 18,
         padding: 20,
-        marginBottom: 60,
+        marginBottom: 40,
         flexDirection: "row",
         shadowColor: "#000",
         shadowOffset: {

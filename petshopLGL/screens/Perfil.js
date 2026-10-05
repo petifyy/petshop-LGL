@@ -47,7 +47,7 @@ export default function Perfil({ navigation }) {
         >
         <MaterialCommunityIcons
             name="home"
-            size={35}
+            size={25}
             color="#999999"
         />
         <Text style={styles.textoMenu}>

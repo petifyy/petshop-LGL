@@ -95,7 +95,7 @@ export default function Notificacoes({ navigation }) {
 
                 <TouchableOpacity
                 style={styles.itemMenu}
-                
+                onPress={() => navigation.navigate("Perfil")}
                 >
                 <MaterialCommunityIcons
                     name="paw"
