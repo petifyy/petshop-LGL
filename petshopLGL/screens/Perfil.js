@@ -48,9 +48,9 @@ export default function Perfil({ navigation }) {
         <MaterialCommunityIcons
             name="home"
             size={35}
-            color="#EE7F2D"
+            color="#999999"
         />
-        <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
+        <Text style={styles.textoMenu}>
             Home
         </Text>
         </TouchableOpacity>
@@ -63,9 +63,9 @@ export default function Perfil({ navigation }) {
         <MaterialCommunityIcons
             name="paw"
             size={20}
-            color="#999999"
+            color="#EE7F2D"
         />
-        <Text style={styles.textoMenu}>
+        <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
             Perfil
         </Text>
         </TouchableOpacity>
