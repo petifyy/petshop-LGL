@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native'
-import { dados } from '../screens/dados'
 import { enviarNotificacao } from '../screens/Notificacoes'
 import { Ionicons } from "@expo/vector-icons";
 
@@ -8,7 +7,6 @@ const servicos = ['Banho', 'Tosa', 'Consulta']
 const dias = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
 const horas = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00']
 
-// Botãozinho de escolha (serviço, dia, hora)
 function Opcao({ texto, ativo, onPress }) {
   return (
     <TouchableOpacity style={[styles.opcao, ativo && { backgroundColor: '#ee7f2d' }]} onPress={onPress}>
@@ -19,7 +17,7 @@ function Opcao({ texto, ativo, onPress }) {
 
 export default function Agendamentos({ navigation, route }) {
   const [servico, setServico] = useState(route.params?.servico || 'Banho')
-  const [pet, setPet] = useState(dados.pet)
+  const [pet, setPet] = useState('')
   const [dia, setDia] = useState('')
   const [hora, setHora] = useState('')
 

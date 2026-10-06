@@ -34,7 +34,7 @@ export default function Home({ navigation }) {
                             />
                         </View>
                         <View style={styles.mensagemConteudo}>
-                            <Text style={styles.mensagemTitulo}>Cuide de quem sempre está ao seu lado 🐾</Text>
+                            <Text style={styles.mensagemTitulo}>Cuide de quem sempre está ao seu lado</Text>
                             <Text style={styles.mensagemTexto}>Agende serviços, cuide da saúde e encontre tudo para o seu pet.</Text>
                         </View>
                     </View>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { enviarNotificacao } from '../screens/Notificacoes'
 
 const produtos = [
@@ -28,29 +28,27 @@ export default function Compras({ navigation }) {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
+    <View style={{ flex: 1, backgroundColor: '#F7F3EE' }}>
       <ScrollView style={styles.container}>
         
-        <View style={styles.tituloLinha}>
-          <MaterialCommunityIcons 
-          name="shopping" 
-          size={30} 
-          color="#4a3b2e" />
-          <Text style={styles.titulo}>Produtos</Text>
-        </View>
+      <View style={styles.head}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="arrow-back" size={22} color="#4a3b2e" />
+        </TouchableOpacity>
+        <Text style={styles.titulo}>Produtos</Text>
+      </View>
 
         {produtos.map((p) => (
           <View key={p.nome} style={styles.card}>
             <View style={styles.info}>
-              <MaterialCommunityIcons name={p.icone} size={32} color="#ee7f2d" />
+              <MaterialCommunityIcons name={p.icone} size={27} color="#ee7f2d" />
               <View style={{ marginLeft: 12 }}>
                 <Text style={styles.nome}>{p.nome}</Text>
                 <Text>R$ {p.preco.toFixed(2).replace('.', ',')}</Text>
               </View>
             </View>
             <TouchableOpacity style={styles.add} onPress={() => setCarrinho([...carrinho, p])}>
-              <MaterialCommunityIcons name="plus" size={18} color="#4a3b2e" />
-              <Text style={styles.addTexto}>Adicionar</Text>
+              <MaterialCommunityIcons name="plus" size={18} color="#fff" />
             </TouchableOpacity>
           </View>
         ))}
@@ -67,22 +65,12 @@ export default function Compras({ navigation }) {
 
         <TouchableOpacity 
         style={styles.botao} 
-        nPress={finalizar}>
+        onPress={finalizar}>
           <MaterialCommunityIcons 
           name="cart-check" 
           size={20} 
           color="#fff" />
           <Text style={styles.botaoTexto}>Finalizar compra</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-        style={[styles.botao, { backgroundColor: '#66bbb6' }]} 
-        onPress={() => navigation.goBack()}>
-          <MaterialCommunityIcons 
-          name="arrow-left" 
-          size={20} 
-          color="#fff" />
-          <Text style={styles.botaoTexto}>Voltar</Text>
         </TouchableOpacity>
 
       </View>
@@ -97,32 +85,43 @@ const styles = StyleSheet.create({
     paddingTop: 60 
   },
 
-  tituloLinha: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    marginBottom: 10 
+  head: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 30,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
   },
 
-  titulo: { 
-    fontSize: 28, 
-    fontWeight: 'bold', 
-    color: '#4a3b2e', 
-    marginLeft: 8 
+  titulo: {
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: '#3E342C',
+    marginLeft: 12,
   },
 
   card: { 
-    backgroundColor: '#fffaf3', 
-    borderRadius: 12, 
-    padding: 14, 
-    marginBottom: 10, 
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    alignItems: 'center' 
+    width: "100%",
+    minHeight: 75,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 17,
+    padding: 12,
+    marginBottom: 11,
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E9DED2",
+    shadowColor: "#5A4636",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 5,
+    elevation: 2,
+    justifyContent: 'space-between',
   },
 
   info: { 
     flexDirection: 'row', 
-    alignItems: 'center' 
+    alignItems: 'center', 
   },
 
   nome: { 
@@ -132,22 +131,21 @@ const styles = StyleSheet.create({
   },
 
   add: { 
-    backgroundColor: '#eec45e', 
-    borderRadius: 10, 
+    backgroundColor: '#66bbb6', 
+    borderRadius: 50, 
     padding: 10, 
     flexDirection: 'row', 
     alignItems: 'center' 
   },
 
-  addTexto: { 
-    fontWeight: 'bold', 
-    color: '#4a3b2e', 
-    marginLeft: 4 
-  },
-
   rodape: { 
-    backgroundColor: '#fffaf3', 
-    padding: 16 
+    backgroundColor: '#fff', 
+    padding: 16,
+    shadowColor: "#5A4636",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 5,
+    elevation: 2,
   },
 
   totalLinha: { 
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    marginTop: 10 
+    marginTop: 20
   },
 
   botaoTexto: { 

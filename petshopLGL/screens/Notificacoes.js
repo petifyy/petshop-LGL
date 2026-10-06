@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { StyleSheet, View, Text, ScrollView, Alert, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, Alert, TouchableOpacity, Image} from 'react-native'
 import * as Notifications from 'expo-notifications'
 import { dados } from '../screens/dados'
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -42,6 +42,10 @@ export default function Notificacoes({ navigation }) {
   return (
     <View style={{ flex: 1, backgroundColor: '#F7F3EE' }}>
       <ScrollView style={styles.container}>
+        <Image
+            source={require("../assets/logodnv.png")}
+            style={styles.logo}
+        />
         <Text style={styles.titulo}>Notificações</Text>
 
         {lista.length === 0 && (
@@ -125,6 +129,14 @@ const styles = StyleSheet.create({
     color: '#4a3b2e', 
     marginBottom: 10 
   },
+  
+  logo: {
+    width: 135,
+    height: 135,
+    alignSelf: "center",
+    resizeMode: "contain",
+    marginBottom: 2,
+},
 
   card: { 
     backgroundColor: '#fffaf3', 
