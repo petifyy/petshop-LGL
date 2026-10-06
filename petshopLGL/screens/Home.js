@@ -16,70 +16,125 @@ export default function Home({ navigation }) {
     return (
         <View style={styles.tela}>
             <ScrollView contentContainerStyle={styles.container}>
-            <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
-                <View style={styles.container}>
+                <View style={styles.conteudo}>
 
-                <Image
-                    source={require("../assets/logoLGL.png")}
-                    style={styles.logo}
-                />
+                    <Image
+                        source={require("../assets/logodnv.png")}
+                        style={styles.logo}
+                    />
+
                     <Text style={styles.titulo}>Olá, {auth.currentUser?.email}!</Text>
-            
-                    <TouchableOpacity 
-                    style={[styles.card, { backgroundColor: '#66bbb6' }]} 
-                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Banho' })}
-                    > 
-                    <MaterialCommunityIcons
-                        name="shower"
-                        size={20}
-                        color="#000"
-                    /> 
-                    <Text style={styles.cardTexto}> Agende seu banho</Text>
+
+                    <View style={styles.mensagem}>
+                        <View style={styles.mensagemIcone}>
+                            <MaterialCommunityIcons
+                                name="paw"
+                                size={27}
+                                color="#D96F32"
+                            />
+                        </View>
+                        <View style={styles.mensagemConteudo}>
+                            <Text style={styles.mensagemTitulo}>Cuide de quem sempre está ao seu lado 🐾</Text>
+                            <Text style={styles.mensagemTexto}>Agende serviços, cuide da saúde e encontre tudo para o seu pet.</Text>
+                        </View>
+                    </View>
+
+                    <Text style={styles.subtitulo}>O que você precisa?</Text>
+
+                    <TouchableOpacity
+                        style={styles.card}
+                        onPress={() => navigation.navigate('Agendamentos', { servico: 'Banho' })}
+                    >
+                        <View style={[styles.iconeCard, { backgroundColor: '#DDF2EF' }]}>
+                            <MaterialCommunityIcons
+                                name="shower"
+                                size={25}
+                                color="#4CA8A0"
+                            />
+                        </View>
+                        <View style={styles.cardConteudo}>
+                            <Text style={styles.cardTitulo}>Banho</Text>
+                            <Text style={styles.cardTexto}>Deixe seu pet limpinho e cheiroso</Text>
+                        </View>
+                        <MaterialCommunityIcons
+                            name="chevron-right"
+                            size={24}
+                            color="#B5AAA0"
+                        />
                     </TouchableOpacity>
 
-                    <TouchableOpacity 
-                    style={[styles.card, { backgroundColor: '#eec45e' }]} 
-                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Tosa' })}
-                    > 
-                    <MaterialCommunityIcons
-                        name="scissors-cutting"
-                        size={20}
-                        color="#000"
-                    /> 
-                    <Text style={styles.cardTexto}> Agende sua tosa</Text>
+                    <TouchableOpacity
+                        style={styles.card}
+                        onPress={() => navigation.navigate('Agendamentos', { servico: 'Tosa' })}
+                    >
+                        <View style={[styles.iconeCard, { backgroundColor: '#FFF1C9' }]}>
+                            <MaterialCommunityIcons
+                                name="scissors-cutting"
+                                size={25}
+                                color="#D29C21"
+                            />
+                        </View>
+                        <View style={styles.cardConteudo}>
+                            <Text style={styles.cardTitulo}>Tosa</Text>
+                            <Text style={styles.cardTexto}>Mantenha seu pet confortável</Text>
+                        </View>
+                        <MaterialCommunityIcons
+                            name="chevron-right"
+                            size={24}
+                            color="#B5AAA0"
+                        />
                     </TouchableOpacity>
 
-                    <TouchableOpacity 
-                    style={[styles.card, { backgroundColor: '#ee7f2d' }]} 
-                    onPress={() => navigation.navigate('Agendamentos', { servico: 'Consulta' })}
-                    > 
-                    <MaterialCommunityIcons
-                        name="doctor"
-                        size={20}
-                        color="#000"
-                    /> 
-                    <Text style={styles.cardTexto}>  Agende sua consulta</Text>
+                    <TouchableOpacity
+                        style={styles.card}
+                        onPress={() => navigation.navigate('Agendamentos', { servico: 'Consulta' })}
+                    >
+                        <View style={[styles.iconeCard, { backgroundColor: '#FBE1D2' }]}>
+                            <MaterialCommunityIcons
+                                name="doctor"
+                                size={25}
+                                color="#D96F32"
+                            />
+                        </View>
+                        <View style={styles.cardConteudo}>
+                            <Text style={styles.cardTitulo}>Consulta</Text>
+                            <Text style={styles.cardTexto}>Cuide da saúde do seu melhor amigo</Text>
+                        </View>
+                        <MaterialCommunityIcons
+                            name="chevron-right"
+                            size={24}
+                            color="#B5AAA0"
+                        />
                     </TouchableOpacity>
 
-                    <TouchableOpacity 
-                    style={[styles.card, { backgroundColor: '#fffaf3' }]} 
-                    onPress={() => navigation.navigate('Compras')}
-                    > 
-                    <MaterialCommunityIcons
-                        name="shopping"
-                        size={20}
-                        color="#000"
-                    /> 
-                    <Text style={styles.cardTexto}>  Compre nossos produtos</Text>
+                    <TouchableOpacity
+                        style={styles.compras}
+                        onPress={() => navigation.navigate('Compras')}
+                    >
+                        <View style={styles.iconeCompras}>
+                            <MaterialCommunityIcons
+                                name="shopping"
+                                size={27}
+                                color="#FFFFFF"
+                            />
+                        </View>
+                        <View style={styles.comprasConteudo}>
+                            <Text style={styles.comprasTitulo}>Compre nossos produtos</Text>
+                            <Text style={styles.comprasTexto}>Tudo que seu pet precisa em um só lugar</Text>
+                        </View>
+                        <MaterialCommunityIcons
+                            name="chevron-right"
+                            size={25}
+                            color="#FFFFFF"
+                        />
                     </TouchableOpacity>
 
                 </View>
-            </View>
             </ScrollView>
 
             <View style={styles.menuInferior}>
 
-                <TouchableOpacity
+        <TouchableOpacity
                 style={styles.itemMenu}
                 onPress={() => navigation.navigate("Notificacoes")}
                 >
@@ -124,83 +179,178 @@ export default function Home({ navigation }) {
                 </TouchableOpacity>
 
             </View>
-                
         </View>
     )
 }
 
-
 const styles = StyleSheet.create({
     tela: {
         flex: 1,
-        backgroundColor: "#e9ccad",
+        backgroundColor: "#F7F3EE",
     },
 
     container: {
-        paddingHorizontal: 25,
-        paddingTop: 30,
-        paddingBottom: 90,
+        paddingHorizontal: 20,
+        paddingTop: 25,
+        paddingBottom: 100,
     },
 
     conteudo: {
-        alignItems: "center",
+        alignItems: "stretch",
     },
 
-    logo:{
-        width:200,
-        height:200,
-        alignSelf:"center",
-        resizeMode:"contain"
-        },
-      
-    titulo:{
-        fontSize:20,
-        textAlign:"center",
-        marginVertical:40
+    logo: {
+        width: 135,
+        height: 135,
+        alignSelf: "center",
+        resizeMode: "contain",
+        marginBottom: 2,
+    },
+
+    titulo: {
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "#3E342C",
+        marginBottom: 22,
+    },
+
+    mensagem: {
+        width: "100%",
+        backgroundColor: "#66bbb6",
+        borderRadius: 18,
+        padding: 16,
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 25,
+        borderWidth: 1,
+        borderColor: "#E9DED2",
+        shadowColor: "#5A4636",
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.07,
+        shadowRadius: 7,
+        elevation: 2,
+    },
+
+    mensagemIcone: {
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        backgroundColor: "#DDF2EF",
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 12,
+    },
+
+    mensagemConteudo: {
+        flex: 1,
+    },
+
+    mensagemTitulo: {
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "#fff",
+        marginBottom: 4,
+    },
+
+    mensagemTexto: {
+        fontSize: 12,
+        color: "#F7F3EE",
+        lineHeight: 17,
+    },
+
+    subtitulo: {
+        fontSize: 17,
+        fontWeight: "bold",
+        color: "#4A3B32",
+        marginBottom: 12,
     },
 
     card: {
         width: "100%",
-        backgroundColor: "#fff",
-        borderRadius: 18,
-        padding: 20,
-        marginBottom: 40,
+        minHeight: 75,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 17,
+        padding: 12,
+        marginBottom: 11,
         flexDirection: "row",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.08,
-        shadowRadius: 6,
-        elevation: 3,
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#E9DED2",
+        shadowColor: "#5A4636",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.06,
+        shadowRadius: 5,
+        elevation: 2,
+    },
+
+    iconeCard: {
+        width: 50,
+        height: 50,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 13,
+    },
+
+    cardConteudo: {
+        flex: 1,
     },
 
     cardTitulo: {
-        fontSize: 14,
-        color: "#888",
-        margimLeft: 4
+        fontSize: 15,
+        fontWeight: "bold",
+        color: "#4A3B32",
+        marginBottom: 3,
     },
 
-    email: {
-        fontSize: 17,
-        fontWeight: "600",
-        color: "#3498db",
+    cardTexto: {
+        fontSize: 12,
+        color: "#92877E",
+        lineHeight: 16,
     },
 
-    descricao: {
-        fontSize: 17,
-        color: "#555",
-        lineHeight: 25,
-        marginBottom: 25,
-    },
-
-    botao: {
-        marginTop: 5,
-        marginBottom: 12,
-        borderRadius: 5,
-        overflow: "hidden",
+    compras: {
         width: "100%",
+        minHeight: 75,
+        backgroundColor: "#D96F32",
+        borderRadius: 17,
+        padding: 12,
+        marginTop: 5,
+        flexDirection: "row",
+        alignItems: "center",
+        shadowColor: "#A84F21",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.18,
+        shadowRadius: 6,
+        elevation: 4,
+    },
+
+    iconeCompras: {
+        width: 50,
+        height: 50,
+        borderRadius: 15,
+        backgroundColor: "rgba(255,255,255,0.18)",
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 13,
+    },
+
+    comprasConteudo: {
+        flex: 1,
+    },
+
+    comprasTitulo: {
+        fontSize: 15,
+        fontWeight: "bold",
+        color: "#FFFFFF",
+        marginBottom: 3,
+    },
+
+    comprasTexto: {
+        fontSize: 12,
+        color: "#FFF1E8",
+        lineHeight: 16,
     },
 
     menuInferior: {
@@ -231,6 +381,5 @@ const styles = StyleSheet.create({
         fontSize: 11,
         color: "#999999",
         marginTop: 3,
-      },
-
+      }
 })

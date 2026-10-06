@@ -1,119 +1,248 @@
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import { dados } from '../screens/dados'
 import { auth } from "../config/firebase";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Perfil({ navigation }) {
-  const realizarLogOut= () => {
+  const realizarLogOut = () => {
     dados.notificacoes = []
     navigation.navigate('Login')
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
+    <View style={{ flex: 1, backgroundColor: '#F7F3EE' }}>
       <View style={styles.container}>
-        <Text style={styles.titulo}>Perfil</Text>
+      <Image
+          source={require("../assets/logodnv.png")}
+          style={styles.logo}
+       />
+        <View style={styles.tituloArea}>
+          <Text style={styles.titulo}>Perfil</Text>
+        </View>
 
         <View style={styles.card}>
-          <Text style={styles.linha}>E-mail: {auth.currentUser?.email}</Text>
-          <Text style={styles.linha}>Senha:  {auth.currentUser?.senha}</Text>
+          <View style={styles.cardCabecalho}>
+            <View style={styles.avatar}>
+              <MaterialCommunityIcons name="account" size={28} color="#D96F32" />
+            </View>
+            <View style={styles.cardCabecalhoTexto}>
+              <Text style={styles.cardTitulo}>Dados da conta</Text>
+              <Text style={styles.cardSubtitulo}>Suas informações de acesso</Text>
+            </View>
+          </View>
+
+          <View style={styles.divisor} />
+
+          <View style={styles.informacao}>
+            <MaterialCommunityIcons name="email-outline" size={21} color="#D96F32" />
+            <View style={styles.informacaoTexto}>
+              <Text style={styles.label}>E-mail</Text>
+              <Text style={styles.linha}>{auth.currentUser?.email}</Text>
+            </View>
+          </View>
+
+          <View style={styles.informacao}>
+            <MaterialCommunityIcons name="lock-outline" size={21} color="#D96F32" />
+            <View style={styles.informacaoTexto}>
+              <Text style={styles.label}>Senha</Text>
+              <Text style={styles.linha}>{auth.currentUser?.senha}</Text>
+            </View>
+          </View>
         </View>
 
         <TouchableOpacity style={styles.botao} onPress={realizarLogOut}>
-          <Text style={styles.botaoTexto}>Sair</Text>
+          <View style={styles.iconeBotao}>
+            <MaterialCommunityIcons name="logout" size={19} color="#D96F32" />
+          </View>
+          <Text style={styles.botaoTexto}>Sair da conta</Text>
+          <MaterialCommunityIcons name="chevron-right" size={23} color="#D96F32" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.menuInferior}>
 
         <TouchableOpacity
-        style={styles.itemMenu}
-        onPress={() => navigation.navigate("Notificacoes")}
-        >
-        <MaterialCommunityIcons
-            name="bell-outline"
-            size={20}
-            color="#999999"
-        />
-        <Text style={styles.textoMenu}>
-            Notificações
-        </Text>
-        </TouchableOpacity>
+                style={styles.itemMenu}
+                onPress={() => navigation.navigate("Notificacoes")}
+                >
+                <MaterialCommunityIcons
+                    name="bell-outline"
+                    size={20}
+                    color="#999999"
+                />
+                <Text style={styles.textoMenu}>
+                    Notificações
+                </Text>
+                </TouchableOpacity>
 
 
-        <TouchableOpacity
-        style={styles.itemMenu}
-        onPress={() => navigation.navigate("Home")}
-        >
-        <MaterialCommunityIcons
-            name="home"
-            size={25}
-            color="#999999"
-        />
-        <Text style={styles.textoMenu}>
-            Home
-        </Text>
-        </TouchableOpacity>
+                <TouchableOpacity
+                style={styles.itemMenu}
+                onPress={() => navigation.navigate("Home")}
+                >
+                <MaterialCommunityIcons
+                    name="home"
+                    size={20}
+                    color="#999999"
+                />
+                <Text style={styles.textoMenu}>
+                    Home
+                </Text>
+                </TouchableOpacity>
 
 
-        <TouchableOpacity
-        style={styles.itemMenu}
-        onPress={() => navigation.navigate("Perfil")}
-        >
-        <MaterialCommunityIcons
-            name="paw"
-            size={20}
-            color="#EE7F2D"
-        />
-        <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
-            Perfil
-        </Text>
-        </TouchableOpacity>
+                <TouchableOpacity
+                style={styles.itemMenu}
+                onPress={() => navigation.navigate("Perfil")}
+                >
+                <MaterialCommunityIcons
+                    name="paw"
+                    size={35}
+                    color="#EE7F2D"
+                />
+                <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
+                    Perfil
+                </Text>
+                </TouchableOpacity>
 
-        </View>
+            </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: 20, 
-    paddingTop: 60 
-},
+  container: {
+    flex: 1,
+    padding: 20,
+    paddingTop: 55,
+    paddingBottom: 100,
+  },
 
-  titulo: { 
-    fontSize: 28, 
-    fontWeight: 'bold', 
-    color: '#4a3b2e', 
-    marginBottom: 10 
-},
+  logo: {
+    width: 135,
+    height: 135,
+    alignSelf: "center",
+    resizeMode: "contain",
+    marginBottom: 2,
+  },
 
-  card: { 
-    backgroundColor: '#fffaf3', 
-    borderRadius: 12, 
-    padding: 16 
-},
+  tituloArea: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 28,
+  },
 
-  linha: { 
-    fontSize: 16, 
-    color: '#4a3b2e', 
-    marginVertical: 6 
-},
+  titulo: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#3E342C',
+  },
 
-  botao: { 
-    backgroundColor: '#ee7f2d', 
-    borderRadius: 12, 
-    padding: 14, 
-    alignItems: 'center', 
-    marginTop: 20 
-},
+  card: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: '#E9DED2',
+    shadowColor: '#5A4636',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.07,
+    shadowRadius: 7,
+    elevation: 3,
+  },
 
-  botaoTexto: { 
-    color: '#fff', 
-    fontWeight: 'bold', 
-    fontSize: 16 
-},
+  cardCabecalho: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 15,
+    backgroundColor: "#FBE1D2",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+
+  cardCabecalhoTexto: {
+    flex: 1,
+  },
+
+  cardTitulo: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#4A3B32",
+  },
+
+  cardSubtitulo: {
+    fontSize: 12,
+    color: "#92877E",
+    marginTop: 3,
+  },
+
+  divisor: {
+    height: 1,
+    backgroundColor: "#EEE5DC",
+    marginVertical: 17,
+  },
+
+  informacao: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 17,
+  },
+
+  informacaoTexto: {
+    flex: 1,
+    marginLeft: 12,
+  },
+
+  label: {
+    fontSize: 11,
+    color: "#A49B93",
+    marginBottom: 3,
+  },
+
+  linha: {
+    fontSize: 14,
+    color: "#4A3B32",
+    fontWeight: "600",
+  },
+
+  botao: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    padding: 13,
+    marginTop: 18,
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E9DED2",
+    shadowColor: "#5A4636",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+    elevation: 2,
+  },
+
+  iconeBotao: {
+    width: 42,
+    height: 42,
+    borderRadius: 13,
+    backgroundColor: "#FBE1D2",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+
+  botaoTexto: {
+    flex: 1,
+    color: '#4A3B32',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
 
   menuInferior: {
     position: "absolute",
@@ -143,5 +272,5 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: "#999999",
     marginTop: 3,
-  },
+  }
 })

@@ -40,7 +40,7 @@ export default function Notificacoes({ navigation }) {
   }, [])
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#e9ccad' }}>
+    <View style={{ flex: 1, backgroundColor: '#F7F3EE' }}>
       <ScrollView style={styles.container}>
         <Text style={styles.titulo}>Notificações</Text>
 
@@ -69,7 +69,7 @@ export default function Notificacoes({ navigation }) {
                 >
                 <MaterialCommunityIcons
                     name="bell-outline"
-                    size={20}
+                    size={35}
                     color="#EE7F2D"
                 />
                 <Text style={[styles.textoMenu, { color: "#EE7F2D" }]}>
@@ -84,7 +84,7 @@ export default function Notificacoes({ navigation }) {
                 >
                 <MaterialCommunityIcons
                     name="home"
-                    size={25}
+                    size={20}
                     color="#999999"
                 />
                 <Text style={styles.textoMenu}>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     padding: 20, 
-    paddingTop: 60 
+    paddingTop: 60,
   },
 
   titulo: { 
