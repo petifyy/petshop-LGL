@@ -53,7 +53,7 @@ export default function Home({ navigation }) {
                             />
                         </View>
                         <View style={styles.cardConteudo}>
-                            <Text style={styles.cardTitulo}>Banho</Text>
+                            <Text style={styles.cardTitulo}>Agende um banho</Text>
                             <Text style={styles.cardTexto}>Deixe seu pet limpinho e cheiroso</Text>
                         </View>
                         <MaterialCommunityIcons
@@ -75,7 +75,7 @@ export default function Home({ navigation }) {
                             />
                         </View>
                         <View style={styles.cardConteudo}>
-                            <Text style={styles.cardTitulo}>Tosa</Text>
+                            <Text style={styles.cardTitulo}>Agende uma tosa</Text>
                             <Text style={styles.cardTexto}>Mantenha seu pet confortável</Text>
                         </View>
                         <MaterialCommunityIcons
@@ -97,7 +97,7 @@ export default function Home({ navigation }) {
                             />
                         </View>
                         <View style={styles.cardConteudo}>
-                            <Text style={styles.cardTitulo}>Consulta</Text>
+                            <Text style={styles.cardTitulo}>Agende uma consulta</Text>
                             <Text style={styles.cardTexto}>Cuide da saúde do seu melhor amigo</Text>
                         </View>
                         <MaterialCommunityIcons
